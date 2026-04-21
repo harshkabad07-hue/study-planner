@@ -3,18 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlanWise | Smart Study Planner</title>
+  <title>EngiPlan | Engineering Student Planner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <section class="login-screen" id="loginScreen" aria-label="Student login">
+    <div class="login-intro">
+      <a class="brand login-brand" href="#">
+        <span class="brand-mark">E</span>
+        <span>EngiPlan</span>
+      </a>
+      <p class="eyebrow">Engineering planner</p>
+      <h1>Build a dashboard for your branch, year, labs, and projects.</h1>
+      <div class="login-preview">
+        <div>
+          <strong>12 days</strong>
+          <span>to internals</span>
+        </div>
+        <div>
+          <strong>7/10</strong>
+          <span>lab records</span>
+        </div>
+        <div>
+          <strong>42</strong>
+          <span>DSA problems</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="login-card" id="loginForm">
+      <p class="eyebrow">Student login</p>
+      <h2>Enter your details</h2>
+
+      <label>
+        Student name
+        <input id="studentName" type="text" placeholder="Aarav Mehta" required>
+      </label>
+
+      <label>
+        Branch
+        <select id="studentBranch" required>
+          <option value="">Select branch</option>
+          <option value="CSE">Computer Science Engineering</option>
+          <option value="IT">Information Technology</option>
+          <option value="ECE">Electronics and Communication</option>
+          <option value="EEE">Electrical and Electronics</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+          <option value="AI DS">Artificial Intelligence and Data Science</option>
+        </select>
+      </label>
+
+      <label>
+        Year
+        <select id="studentYear" required>
+          <option value="">Select year</option>
+          <option value="1st Year">1st Year</option>
+          <option value="2nd Year">2nd Year</option>
+          <option value="3rd Year">3rd Year</option>
+          <option value="4th Year">4th Year</option>
+        </select>
+      </label>
+
+      <label>
+        Semester
+        <select id="studentSemester" required>
+          <option value="">Select semester</option>
+          <option value="Semester 1">Semester 1</option>
+          <option value="Semester 2">Semester 2</option>
+          <option value="Semester 3">Semester 3</option>
+          <option value="Semester 4">Semester 4</option>
+          <option value="Semester 5">Semester 5</option>
+          <option value="Semester 6">Semester 6</option>
+          <option value="Semester 7">Semester 7</option>
+          <option value="Semester 8">Semester 8</option>
+        </select>
+      </label>
+
+      <button class="primary-btn" type="submit">Open Dashboard</button>
+    </form>
+  </section>
+
   <div class="app-shell">
     <aside class="sidebar" aria-label="Main navigation">
       <a class="brand" href="#">
-        <span class="brand-mark">P</span>
-        <span>PlanWise</span>
+        <span class="brand-mark">E</span>
+        <span>EngiPlan</span>
       </a>
 
       <nav class="nav-list">
@@ -30,6 +107,14 @@
           <span>T</span>
           Tasks
         </a>
+        <a class="nav-link" href="#labs">
+          <span>L</span>
+          Labs
+        </a>
+        <a class="nav-link" href="#project">
+          <span>M</span>
+          Project
+        </a>
         <a class="nav-link" href="#focus">
           <span>F</span>
           Focus
@@ -37,10 +122,10 @@
       </nav>
 
       <div class="mini-profile">
-        <div class="avatar">A</div>
+        <div class="avatar" id="profileInitial">A</div>
         <div>
-          <strong>Aarav Sharma</strong>
-          <span>Class 12 Science</span>
+          <strong id="profileName">Aarav Mehta</strong>
+          <span id="profileCourse">CSE, Semester 5</span>
         </div>
       </div>
     </aside>
@@ -49,7 +134,7 @@
       <header class="topbar">
         <div>
           <p class="eyebrow">Tuesday, 21 April</p>
-          <h1>Good morning, Aarav</h1>
+          <h1 id="welcomeTitle">Good morning, Aarav</h1>
         </div>
         <button class="primary-btn" id="addTaskBtn" type="button">
           <span>+</span>
@@ -59,11 +144,11 @@
 
       <section class="hero-panel" id="dashboard">
         <div class="hero-copy">
-          <p class="eyebrow">Exam countdown: 18 days</p>
-          <h2>Finish Physics revision and keep the week under control.</h2>
+          <p class="eyebrow">Internal exam: 12 days left</p>
+          <h2>Plan your semester like an engineer.</h2>
           <div class="hero-actions">
-            <button class="primary-btn" type="button">Start Today's Plan</button>
-            <button class="ghost-btn" type="button">View Calendar</button>
+            <button class="primary-btn" type="button">Start Today's Sprint</button>
+            <button class="ghost-btn" type="button">View Timetable</button>
           </div>
         </div>
 
@@ -75,16 +160,16 @@
             </svg>
             <div>
               <strong>72%</strong>
-              <span>weekly plan</span>
+              <span>semester progress</span>
             </div>
           </div>
           <div class="floating-note one">
-            <strong>Chemistry</strong>
-            <span>Organic revision</span>
+            <strong>DBMS Lab</strong>
+            <span>SQL joins pending</span>
           </div>
           <div class="floating-note two">
-            <strong>Maths</strong>
-            <span>10 questions done</span>
+            <strong>DSA Practice</strong>
+            <span>5 problems today</span>
           </div>
         </div>
       </section>
@@ -93,22 +178,22 @@
         <article class="stat-card">
           <span class="stat-icon blue">UP</span>
           <p>Study hours</p>
-          <strong>24.5</strong>
+          <strong>28.5</strong>
         </article>
         <article class="stat-card">
           <span class="stat-icon green">OK</span>
-          <p>Tasks done</p>
-          <strong>18/25</strong>
+          <p>DSA problems</p>
+          <strong>42</strong>
         </article>
         <article class="stat-card">
           <span class="stat-icon yellow">ST</span>
-          <p>Current streak</p>
-          <strong>9 days</strong>
+          <p>Lab records</p>
+          <strong>7/10</strong>
         </article>
         <article class="stat-card">
           <span class="stat-icon red">!</span>
           <p>Due soon</p>
-          <strong>3 tasks</strong>
+          <strong>4 items</strong>
         </article>
       </section>
 
@@ -116,7 +201,7 @@
         <section class="section-block" id="planner">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Weekly Planner</p>
+              <p class="eyebrow">Semester Planner</p>
               <h2>This week</h2>
             </div>
             <div class="segmented-control" aria-label="Planner view">
@@ -129,30 +214,30 @@
             <article class="day-card active">
               <span>Mon</span>
               <strong>3.5h</strong>
-              <div class="subject math">Maths</div>
-              <div class="subject physics">Physics</div>
+              <div class="subject dsa">DSA</div>
+              <div class="subject os">OS</div>
             </article>
             <article class="day-card">
               <span>Tue</span>
               <strong>4h</strong>
-              <div class="subject chemistry">Chemistry</div>
-              <div class="subject english">English</div>
+              <div class="subject dbms">DBMS Lab</div>
+              <div class="subject web">Web Dev</div>
             </article>
             <article class="day-card">
               <span>Wed</span>
               <strong>2h</strong>
-              <div class="subject physics">Physics</div>
+              <div class="subject cn">CN</div>
             </article>
             <article class="day-card">
               <span>Thu</span>
               <strong>3h</strong>
-              <div class="subject math">Maths</div>
-              <div class="subject chemistry">Chemistry</div>
+              <div class="subject dsa">DSA</div>
+              <div class="subject dbms">DBMS</div>
             </article>
             <article class="day-card">
               <span>Fri</span>
               <strong>2.5h</strong>
-              <div class="subject english">English</div>
+              <div class="subject project">Mini Project</div>
             </article>
           </div>
         </section>
@@ -166,7 +251,7 @@
           </div>
 
           <div class="timer" id="timer">25:00</div>
-          <p class="timer-label">Physics numericals</p>
+          <p class="timer-label">DSA problem solving</p>
           <div class="timer-actions">
             <button class="primary-btn" id="startTimer" type="button">Start</button>
             <button class="ghost-btn" id="resetTimer" type="button">Reset</button>
@@ -178,38 +263,115 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">Today</p>
-            <h2>Priority tasks</h2>
+            <h2>Engineering tasks</h2>
           </div>
           <select id="subjectFilter" aria-label="Filter tasks by subject">
             <option value="all">All subjects</option>
-            <option value="Physics">Physics</option>
-            <option value="Maths">Maths</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="English">English</option>
+            <option value="DSA">DSA</option>
+            <option value="DBMS">DBMS</option>
+            <option value="OS">OS</option>
+            <option value="CN">CN</option>
+            <option value="Web Dev">Web Dev</option>
+            <option value="Project">Project</option>
           </select>
         </div>
 
         <div class="task-list" id="taskList"></div>
       </section>
+
+      <div class="content-grid tracker-grid">
+        <section class="section-block" id="labs">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Lab Tracker</p>
+              <h2>Pending records</h2>
+            </div>
+          </div>
+
+          <div class="lab-list">
+            <article class="lab-item">
+              <span class="lab-status pending">Due</span>
+              <div>
+                <strong>DBMS Experiment 6</strong>
+                <p>Joins, subqueries, and views</p>
+              </div>
+              <span>Thu</span>
+            </article>
+            <article class="lab-item">
+              <span class="lab-status done">Done</span>
+              <div>
+                <strong>OS Experiment 4</strong>
+                <p>CPU scheduling algorithms</p>
+              </div>
+              <span>Fri</span>
+            </article>
+            <article class="lab-item">
+              <span class="lab-status review">Viva</span>
+              <div>
+                <strong>CN Packet Tracer</strong>
+                <p>Subnetting and router config</p>
+              </div>
+              <span>Mon</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="project">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Mini Project</p>
+              <h2>Smart Attendance App</h2>
+            </div>
+          </div>
+
+          <div class="project-progress">
+            <div class="progress-bar" aria-label="Mini project progress">
+              <span style="width: 68%"></span>
+            </div>
+            <strong>68% complete</strong>
+          </div>
+
+          <div class="milestone-list">
+            <div>
+              <span class="dot done"></span>
+              UI wireframes completed
+            </div>
+            <div>
+              <span class="dot done"></span>
+              Firebase login connected
+            </div>
+            <div>
+              <span class="dot active"></span>
+              Attendance dashboard in progress
+            </div>
+            <div>
+              <span class="dot"></span>
+              Final report and demo video
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   </div>
 
   <div class="modal" id="taskModal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="close-btn" id="closeModal" type="button" aria-label="Close">x</button>
-      <h2 id="modalTitle">Add study task</h2>
+      <h2 id="modalTitle">Add engineering task</h2>
       <form id="taskForm">
         <label>
           Task name
-          <input id="taskName" type="text" placeholder="Revise electrostatics" required>
+          <input id="taskName" type="text" placeholder="Complete DBMS assignment" required>
         </label>
         <label>
           Subject
           <select id="taskSubject">
-            <option>Physics</option>
-            <option>Maths</option>
-            <option>Chemistry</option>
-            <option>English</option>
+            <option>DSA</option>
+            <option>DBMS</option>
+            <option>OS</option>
+            <option>CN</option>
+            <option>Web Dev</option>
+            <option>Project</option>
           </select>
         </label>
         <label>

@@ -1,26 +1,32 @@
 const tasks = [
   {
-    name: "Solve Physics numericals",
-    subject: "Physics",
+    name: "Solve 5 linked list problems",
+    subject: "DSA",
     time: "4:30 PM",
     completed: false
   },
   {
-    name: "Revise integration formulas",
-    subject: "Maths",
+    name: "Submit DBMS assignment",
+    subject: "DBMS",
     time: "6:00 PM",
     completed: true
   },
   {
-    name: "Organic chemistry notes",
-    subject: "Chemistry",
+    name: "Revise process scheduling",
+    subject: "OS",
     time: "7:15 PM",
     completed: false
   },
   {
-    name: "English essay outline",
-    subject: "English",
+    name: "Update mini project report",
+    subject: "Project",
     time: "8:00 PM",
+    completed: false
+  },
+  {
+    name: "Practice subnetting questions",
+    subject: "CN",
+    time: "9:00 PM",
     completed: false
   }
 ];
@@ -29,17 +35,25 @@ const taskList = document.getElementById("taskList");
 const subjectFilter = document.getElementById("subjectFilter");
 const taskModal = document.getElementById("taskModal");
 const taskForm = document.getElementById("taskForm");
+const loginScreen = document.getElementById("loginScreen");
+const loginForm = document.getElementById("loginForm");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const closeModal = document.getElementById("closeModal");
 const timerDisplay = document.getElementById("timer");
 const startTimer = document.getElementById("startTimer");
 const resetTimer = document.getElementById("resetTimer");
+const profileInitial = document.getElementById("profileInitial");
+const profileName = document.getElementById("profileName");
+const profileCourse = document.getElementById("profileCourse");
+const welcomeTitle = document.getElementById("welcomeTitle");
 
 const subjectClasses = {
-  Physics: "physics",
-  Maths: "math",
-  Chemistry: "chemistry",
-  English: "english"
+  DSA: "dsa",
+  DBMS: "dbms",
+  OS: "os",
+  CN: "cn",
+  "Web Dev": "web",
+  Project: "project"
 };
 
 function renderTasks() {
@@ -93,6 +107,22 @@ function closeTaskModal() {
 addTaskBtn.addEventListener("click", openTaskModal);
 closeModal.addEventListener("click", closeTaskModal);
 subjectFilter.addEventListener("change", renderTasks);
+
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const studentName = document.getElementById("studentName").value.trim();
+  const branch = document.getElementById("studentBranch").value;
+  const year = document.getElementById("studentYear").value;
+  const semester = document.getElementById("studentSemester").value;
+  const firstName = studentName.split(" ")[0];
+
+  profileInitial.textContent = studentName.charAt(0).toUpperCase();
+  profileName.textContent = studentName;
+  profileCourse.textContent = `${branch}, ${year}, ${semester}`;
+  welcomeTitle.textContent = `Good morning, ${firstName}`;
+  loginScreen.classList.add("hidden");
+});
 
 taskModal.addEventListener("click", (event) => {
   if (event.target === taskModal) {
